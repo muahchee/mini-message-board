@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CustomNotFoundError } from "../error/CustomNotFoundError.js";
+import { getDetails, getMessages } from "../controllers/indexController.js";
 
 export const indexRouter = Router();
 
@@ -18,14 +18,5 @@ export let messages = [
   },
 ];
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages: messages });
-});
-
-indexRouter.get("/:id/details", (req, res) => {
-  const reqMessage = messages.find(item => item.id === Number(req.params.id))
-
-  res.render("details", {
-    message: reqMessage,
-  });
-});
+indexRouter.get("/", getMessages);
+indexRouter.get("/:id/details", getDetails);
