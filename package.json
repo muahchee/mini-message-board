@@ -1,10 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "node --watch app.js"
+    "dev": "node --watch app.js dev",
+    "prod": "node --watch app.js prod",
+    "dev-db": "node db/populatedb.js dev",
+    "prod-db": "node db/populatedb.js prod"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
   }
 }
