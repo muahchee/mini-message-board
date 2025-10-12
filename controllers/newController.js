@@ -1,13 +1,12 @@
-import { messages } from "../routes/indexRouter.js";
+import { addMessage } from "../db/queries.js";
 
 export async function getForm(req, res) {
   res.render("form", { title: "Send a Message!" });
 }
 
 export async function postForm(req, res) {
-  messages.push({
-    id: messages.length,
-    user: req.body.user,
+  await addMessage({
+    name: req.body.name,
     text: req.body.text,
     added: new Date().toLocaleString(),
   });

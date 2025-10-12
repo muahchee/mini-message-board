@@ -1,14 +1,19 @@
+import { getAllMessages, getMessageById } from "../db/queries.js";
 import { CustomNotFoundError } from "../error/CustomNotFoundError.js";
-import { messages } from "../routes/indexRouter.js";
+
 
 export async function getMessages(req, res) {
+
+const messages = await getAllMessages();
   res.render("index", { title: "Mini Messageboard", messages: messages });
+  console.log(messages)
 }
 
 export async function getDetails(req, res) {
-  const reqMessage = messages.find((item) => item.id === Number(req.params.id));
+  const reqMessage = await getMessageById(req.params.id);
+  console.log(reqMessage)
 
-  if (!reqMessage) throw new CustomNotFoundError("Message Not Found!");
+  // if (!reqMessage) throw new CustomNotFoundError("Message Not Found!");
 
   res.render("details", {
     message: reqMessage,

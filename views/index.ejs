@@ -14,7 +14,7 @@
     <a href="/new">Add New Message</a>
     <% for (let i = messages.length-1; i > -1; i--) { %>
       <li class="messages">
-        <p><span class="user"><%= messages[i].user %> </span>: <%= messages[i].text %></p>
+        <p><span class="user"><%= messages[i].name %> </span>: <%= messages[i].text %></p>
         <p><%= messages[i].added %></p>
         <a href="/<%= messages[i].id %>/details">Open</a>
       </li>
