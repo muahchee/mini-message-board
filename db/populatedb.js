@@ -8,21 +8,14 @@ dotenv.config();
 
 const { connectionString } = getEnv(argv);
 
-const date = new Date().toLocaleString();
-
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT,
   text TEXT,
   added TEXT
-);
+)
 
-INSERT INTO messages (name, text, added)
-VALUES
-  ('Tangy', 'Hi there, shmoopy!', '${date}'),
-  ('Roswell', 'spaaaace', '${date}'),
-  ('Byleth', 'i like fishing :3', '${date}');
 `;
 
 async function main() {

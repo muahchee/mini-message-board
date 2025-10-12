@@ -5,10 +5,9 @@ const textLengthErr = "must be 1 to 200 characters";
 const repeatErr = "No repeat messages allowed.";
 
 const validatePost = [
-  body("name").trim().escape(),
+  body("name").trim(),
   body("text")
     .trim()
-    .escape()
     .isLength({ min: 1, max: 200 })
     .withMessage(`Messages ${textLengthErr}`)
     .custom(async (value) =>{
