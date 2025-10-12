@@ -9,12 +9,13 @@
   <header>
     <h1><%= title %></h1>
   </header>
+  <%- include("partials/error.ejs") %>
   <main>
     <form method="post" action="/new">
       <label for="name">Name: </label>
-      <input type="text" id="name" name="name">
+      <input type="text" id="name" name="name" required>
       <label for="text">Message: </label>
-      <textarea id="text" name="text"></textarea>
+      <textarea id="text" name="text" minlength="1" maxlength="200" required></textarea>
       <button type="submit">Submit</button>
     </form>
   </main>

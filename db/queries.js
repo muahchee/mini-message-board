@@ -15,7 +15,12 @@ export async function addMessage(obj) {
 
 export async function getMessageById(id) {
   const sql = format("SELECT * FROM messages WHERE id=%s;", id);
-  console.log(sql);
   const { rows } = await pool.query(sql);
   return rows[0];
+}
+
+export async function getMessageByText(text) {
+  const sql = format("SELECT * FROM messages WHERE text Like '%s';", text);
+  const { rows } = await pool.query(sql);
+  return rows[0]
 }
