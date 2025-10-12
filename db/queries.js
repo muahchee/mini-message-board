@@ -20,7 +20,7 @@ export async function getMessageById(id) {
 }
 
 export async function getMessageByText(text) {
-  const sql = format("SELECT * FROM messages WHERE text Like '%s';", text);
+  const sql = format("SELECT * FROM messages WHERE text Like %L;", text);
   const { rows } = await pool.query(sql);
   return rows[0]
 }
